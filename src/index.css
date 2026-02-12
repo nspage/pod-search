@@ -60,6 +60,14 @@ body {
     margin-bottom: 32px;
 }
 
+.header-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
 .header-badge {
     display: inline-block;
     font-size: 0.72rem;
@@ -70,8 +78,24 @@ body {
     border: 1px solid var(--border-accent);
     border-radius: 100px;
     padding: 6px 18px;
-    margin-bottom: 20px;
     background: var(--accent-soft);
+}
+
+.github-link {
+    color: var(--text-muted);
+    transition: color 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.github-link:hover {
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.github-icon {
+    width: 22px;
+    height: 22px;
 }
 
 .header-title {
@@ -659,4 +683,25 @@ body {
     .next-steps__actions {
         flex-direction: column;
     }
+}
+
+/* ── Footer ───────────────────────────────────────────────────────── */
+.dashboard-footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.dashboard-footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.15s;
+    font-weight: 500;
+}
+
+.dashboard-footer a:hover {
+    color: var(--accent);
 }

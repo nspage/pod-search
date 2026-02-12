@@ -26,6 +26,12 @@ async function alliumFetch(
     });
     if (!res.ok) {
         const body = await res.text();
+        if (res.status === 401) {
+            throw new Error("Allium Subscription Required: Please verify your API key has Explorer access.");
+        }
+        if (res.status === 429) {
+            throw new Error("Allium Rate Limit Reached: Too many requests. Please try again in a moment.");
+        }
         throw new Error(`Allium API error ${res.status}: ${body}`);
     }
     const text = await res.text();
