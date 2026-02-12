@@ -25,24 +25,23 @@ export default function Dashboard() {
                     </a>
                 </div>
                 <h1 className="header-title">
-                    High-Intent User
-                    <span className="header-highlight"> Discovery</span>
+                    Pod
+                    <span className="header-highlight"> Finder</span>
                 </h1>
                 <p className="header-subtitle">
-                    Find high-value users on the Base blockchain using real on-chain data.
-                    Select a segment, choose your target protocol, and discover users ready for your product.
+                    Locate high-intent whale pods on the Base blockchain.
+                    Target specific cohorts, scan on-chain behavior, and discover your next power users.
                 </p>
             </header>
 
             {/* Methodology Card */}
             <div className="methodology-card">
-                <div className="methodology-icon">🔍</div>
+                <div className="methodology-icon">🛰️</div>
                 <div className="methodology-content">
-                    <strong>How it works</strong>
+                    <strong>Autonomous Scanning</strong>
                     <p>
-                        We query real-time Base blockchain data via Allium to find wallets matching
-                        your criteria. No personal data is collected — only public on-chain activity.
-                        Each search returns up to 10 high-value users.
+                        We deploy sonar queries across Base blockchain via Allium to triangulate wallets matching
+                        your exact criteria. Each ping deciphers public protocol interactions to find up to 10 targets.
                     </p>
                 </div>
             </div>
@@ -66,7 +65,7 @@ export default function Dashboard() {
             )}
 
             <footer className="dashboard-footer">
-                built with ☕🚬 by <a href="https://coolcoolcool.xyz/" target="_blank" rel="noopener noreferrer">Nicolas</a>
+                deployed from the abyss by <a href="https://coolcoolcool.xyz/" target="_blank" rel="noopener noreferrer">Nicolas</a>
             </footer>
         </div>
     );

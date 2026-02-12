@@ -22,7 +22,7 @@ export default function ResultsPanel({ segmentType, onClose }: Props) {
                     <button className="results-close" onClick={onClose}>✕</button>
                 </div>
                 <p className="results-empty">
-                    Select your options above and click <strong>"Find Users →"</strong> to start.
+                    Scanner Idle. Calibrate parameters above and click <strong>"Initialize Scan →"</strong> to begin triangulation.
                 </p>
             </section>
         );
@@ -108,7 +108,7 @@ export default function ResultsPanel({ segmentType, onClose }: Props) {
 
             {latestRun.status === "failed" && (
                 <div className="results-status results-status--error">
-                    <span>Query failed: {latestRun.error ?? "Unknown error"}</span>
+                    <span>Interference Detected: {latestRun.error ?? "Signal Lost"}</span>
                 </div>
             )}
 
@@ -118,7 +118,7 @@ export default function ResultsPanel({ segmentType, onClose }: Props) {
                     <div className="insight-card">
                         <div className="insight-stat">
                             <span className="insight-stat__value">{rowCount}</span>
-                            <span className="insight-stat__label">Users Found on Base</span>
+                            <span className="insight-stat__label">Targets Pinpointed</span>
                         </div>
                         {numericCol && totalValue > 0 && (
                             <div className="insight-stat">
@@ -128,12 +128,12 @@ export default function ResultsPanel({ segmentType, onClose }: Props) {
                                         : `${(totalValue / 1_000).toFixed(0)}K`}
                                 </span>
                                 <span className="insight-stat__label">
-                                    Total {numericCol.label}
+                                    Aggregated {numericCol.label}
                                 </span>
                             </div>
                         )}
                         <button className="insight-export" onClick={handleExportCSV}>
-                            ↓ Export CSV
+                            ↓ Download Manifest
                         </button>
                     </div>
 
@@ -165,13 +165,13 @@ export default function ResultsPanel({ segmentType, onClose }: Props) {
 
                     {/* Next Steps */}
                     <div className="next-steps">
-                        <span className="next-steps__label">Next steps</span>
+                        <span className="next-steps__label">Deployment sequence</span>
                         <div className="next-steps__actions">
                             <button className="next-step-btn" onClick={handleExportCSV}>
-                                📋 Export to CRM
+                                📋 Export Manifest
                             </button>
                             <button className="next-step-btn" onClick={() => navigator.clipboard.writeText(rows.map((r) => String(r[segment.resultColumns[0].key] ?? "")).join("\n"))}>
-                                📎 Copy Wallets
+                                📎 Copy Target Addresses
                             </button>
                         </div>
                     </div>

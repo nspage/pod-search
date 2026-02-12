@@ -50,6 +50,12 @@ export default function SegmentCard({ segment, isActive, onSelect }: Props) {
         <div
             className={`segment-card ${isActive ? "segment-card--active" : ""} ${isLoading ? "segment-card--loading" : ""}`}
         >
+            {/* HUD Target Corners */}
+            <div className="target-corner corner-tl"></div>
+            <div className="target-corner corner-tr"></div>
+            <div className="target-corner corner-bl"></div>
+            <div className="target-corner corner-br"></div>
+
             <div className="segment-card__top">
                 <div className="segment-card__icon">{segment.icon}</div>
                 <h3 className="segment-card__title">{segment.label}</h3>
@@ -83,7 +89,7 @@ export default function SegmentCard({ segment, isActive, onSelect }: Props) {
 
             {/* Useful for */}
             <div className="segment-card__useful">
-                <span className="useful-label">Useful for</span>
+                <span className="useful-label">Operational Utility</span>
                 <div className="useful-tags">
                     {segment.usefulFor.map((u) => (
                         <span key={u} className="useful-tag">{u}</span>
@@ -99,21 +105,24 @@ export default function SegmentCard({ segment, isActive, onSelect }: Props) {
             >
                 {isLoading ? (
                     <>
-                        <span className="cta-dots"><span></span><span></span><span></span></span>
-                        Mining Base Data…
+                        <div className="sonar-container">
+                            <div className="sonar-ping"></div>
+                            <div className="radar-sweep"></div>
+                        </div>
+                        <span style={{ marginLeft: "12px" }}>Scanning Abyss…</span>
                     </>
                 ) : (
-                    "Find Users →"
+                    "Initialize Scan →"
                 )}
             </button>
 
             {/* Status badges */}
             {latestRun?.status === "success" && (
-                <div className="segment-card__badge">✓ Results Ready</div>
+                <div className="segment-card__badge">✓ Pod Identified</div>
             )}
             {latestRun?.status === "failed" && (
                 <div className="segment-card__badge segment-card__badge--error">
-                    ✕ Failed
+                    ✕ Signal Lost
                 </div>
             )}
 

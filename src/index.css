@@ -1,25 +1,29 @@
 /* ── Design Tokens ────────────────────────────────────────────────── */
 :root {
-    --bg-deep: #07070c;
-    --bg-surface: #0f0f18;
-    --bg-card: #141420;
-    --bg-card-hover: #1a1a2e;
-    --accent: #7c6aff;
-    --accent-soft: rgba(124, 106, 255, 0.12);
-    --accent-glow: rgba(124, 106, 255, 0.25);
+    --bg-deep: #02040a;
+    --bg-surface: #0a0f1d;
+    --bg-card: #0f172a;
+    --bg-card-hover: #1e293b;
+    --accent: #22d3ee;
+    /* Bioluminescent Cyan */
+    --accent-soft: rgba(34, 211, 238, 0.12);
+    --accent-glow: rgba(34, 211, 238, 0.3);
     --green: #34d399;
-    --red: #f87171;
-    --text-primary: #eee;
-    --text-secondary: rgba(255, 255, 255, 0.55);
-    --text-muted: rgba(255, 255, 255, 0.3);
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-accent: rgba(124, 106, 255, 0.3);
+    /* Sonar Green */
+    --red: #f43f5e;
+    /* Alert Red */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #475569;
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --border-accent: rgba(34, 211, 238, 0.3);
     --radius-sm: 8px;
     --radius-md: 14px;
-    --radius-lg: 20px;
+    --radius-lg: 24px;
     --font-display: "Inter", system-ui, sans-serif;
-    --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 30px rgba(124, 106, 255, 0.08);
+    --font-mono: "SF Mono", "Fira Code", monospace;
+    --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 40px rgba(34, 211, 238, 0.08);
 }
 
 /* ── Reset & Body ─────────────────────────────────────────────────── */
@@ -352,6 +356,103 @@ body {
     }
 }
 
+/* ── Sonar Radar Animation ────────────────────────────────────────── */
+.sonar-container {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sonar-ping {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+
+    75%,
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+.radar-sweep {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, var(--accent-soft) 0deg, transparent 90deg);
+    border-radius: 50%;
+    animation: sweep 2s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes sweep {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* HUD Target Markers */
+.target-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--border-accent);
+    opacity: 0.4;
+    transition: opacity 0.3s, border-color 0.3s;
+}
+
+.segment-card:hover .target-corner {
+    opacity: 1;
+    border-color: var(--accent);
+}
+
+.corner-tl {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-tr {
+    top: -2px;
+    right: -2px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner-bl {
+    bottom: -2px;
+    left: -2px;
+    border-right: none;
+    border-top: none;
+}
+
+.corner-br {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+}
+
 /* ── Status Badges ────────────────────────────────────────────────── */
 .segment-card__badge {
     position: absolute;
@@ -544,15 +645,16 @@ body {
 .results-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
 }
 
 .results-table th {
     text-align: left;
-    padding: 10px 14px;
-    font-size: 0.7rem;
+    padding: 12px 14px;
+    font-size: 0.65rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-muted);
     background: var(--bg-card);
@@ -560,7 +662,7 @@ body {
 }
 
 .results-table td {
-    padding: 10px 14px;
+    padding: 8px 14px;
     border-bottom: 1px solid var(--border-subtle);
     color: var(--text-secondary);
 }

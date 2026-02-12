@@ -55,14 +55,14 @@ const ALL_PROTOCOLS = [
 export const SEGMENTS: SegmentDef[] = [
     {
         type: "power_swappers",
-        label: "Power Swappers",
-        tagline: "Top traders on Base DEXs",
+        label: "High-Velocity Traders",
+        tagline: "Volume-dominant addresses on Base DEXs",
         description:
-            "Find the most active traders on Base's leading decentralized exchanges — Aerodrome, Uniswap V3, or BaseSwap. These are users with consistent swap volume in the last 7 days, signaling high engagement and spending power.",
+            "Target wallets with significant 7-day swap volume on major venues (Aerodrome, Uniswap). These actors exhibit high on-chain velocity and are prime candidates for incentive programs.",
         usefulFor: [
-            "Loyalty & VIP programs",
-            "Fee rebate campaigns",
-            "Early access launches",
+            "Volume Mining Programs",
+            "VIP Trading Tiers",
+            "Fee Rebate Targeting",
         ],
         icon: "⚡",
         options: [
@@ -87,21 +87,21 @@ ORDER BY total_volume_usd DESC
 LIMIT 10`,
         resultColumns: [
             { key: "wallet_address", label: "Wallet", format: "address" },
-            { key: "total_swaps", label: "Swaps (7d)", format: "number" },
-            { key: "total_volume_usd", label: "Volume (USD)", format: "number" },
+            { key: "total_swaps", label: "7d Swaps", format: "number" },
+            { key: "total_volume_usd", label: "7d Volume (USD)", format: "number" },
         ],
     },
 
     {
         type: "lending_whales",
-        label: "Lending Whales",
-        tagline: "High-capital lenders on Base",
+        label: "Deep Capital Allocators",
+        tagline: "High-TVL liquidity providers",
         description:
-            "Identify users who have deposited significant capital into lending protocols on Base — Morpho, Aave V3, or Moonwell — in the last 7 days. These users actively manage DeFi positions and represent high-net-worth on-chain participants.",
+            "Identify addresses deploying substantial capital into lending markets (Morpho, Aave). These are sophisticated DeFi actors managing yield-bearing positions.",
         usefulFor: [
-            "Yield aggregator user acquisition",
-            "Stablecoin product marketing",
-            "DeFi insurance cross-sell",
+            "Liquidity Mining Events",
+            "Treasury Diversification",
+            "Risk-Adjusted Yield Offers",
         ],
         icon: "🐋",
         options: [
@@ -126,21 +126,21 @@ ORDER BY total_deposited_usd DESC
 LIMIT 10`,
         resultColumns: [
             { key: "wallet_address", label: "Wallet", format: "address" },
-            { key: "deposit_count", label: "Deposits (7d)", format: "number" },
-            { key: "total_deposited_usd", label: "Deposited (USD)", format: "number" },
+            { key: "deposit_count", label: "7d Deposits", format: "number" },
+            { key: "total_deposited_usd", label: "Total Deposited (USD)", format: "number" },
         ],
     },
 
     {
         type: "cross_protocol",
-        label: "Cross-Protocol Users",
-        tagline: "Users active across multiple Base protocols",
+        label: "Ecosystem Nomads",
+        tagline: "Multi-protocol interoperability tracking",
         description:
-            "Discover users who are active on one Base protocol and also use another. Perfect for identifying partnership opportunities, cross-promotion targets, or competitive intelligence on Base.",
+            "Map user flow between protocols. Identify wallets that bridge activity from a source protocol (e.g., Aerodrome) to a target destination, revealing competitive overlap or partnership synergy.",
         usefulFor: [
-            "Partnership & co-marketing",
-            "Competitive conquesting",
-            "Cross-sell campaigns",
+            "Partnership Attribution",
+            "Competitor Vampire Attacks",
+            "Cross-Pollination Campaigns",
         ],
         icon: "🎯",
         options: [
@@ -187,13 +187,13 @@ LIMIT 10`,
     {
         type: "early_adopter",
         label: "Base OGs",
-        tagline: "Early Base network adopters",
+        tagline: "First-cohort network participants",
         description:
-            "Find wallets that bridged assets to Base during its public launch window (before Aug 15, 2023). These early adopters demonstrated conviction in the Base ecosystem and are high-value targets for retroactive rewards.",
+            "Isolate wallets with proven conviction during the Base mainnet launch window (Aug 2023). These addresses represent the backbone of the network's early retention curve.",
         usefulFor: [
-            "Retroactive airdrops",
-            "OG roles & community access",
-            "Early liquidity incentives",
+            "Retroactive Governance",
+            "Community Stewardship",
+            "Loyalty Multipliers",
         ],
         icon: "🚀",
         options: [],
